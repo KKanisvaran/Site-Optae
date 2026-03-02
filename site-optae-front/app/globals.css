@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --optae-blue: #1B2A6B;
+  --optae-accent: #4F5E8A;
+  --optae-light: #DCE6FF;
 }
 
 @theme inline {
@@ -10,17 +13,45 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  /* Animations et timings pour la sidebar et les effets visuels */
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --transition-timing-function-cubic: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* IMPORTANT : On force le fond en blanc et le texte en noir.
+   On retire toute détection automatique du mode sombre (dark mode) 
+   pour que le design "Premium" d'OPTAE reste constant.
+*/
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff !important;
+  color: #171717 !important;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Personnalisation de la barre de défilement pour la sidebar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--optae-blue);
+  border-radius: 10px;
+}
+
+/* Classe utilitaire pour l'ouverture fluide du menu Sommaire */
+.transition-sidebar {
+  transition-property: transform, opacity, visibility;
+  transition-duration: 600ms;
+  transition-timing-function: var(--transition-timing-function-cubic);
+}
+
+/* Ajustement pour éviter que les images (logo) ne soient inversées par certains navigateurs */
+img {
+  filter: none !important;
 }
