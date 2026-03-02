@@ -1,5 +1,5 @@
 {
-  "name": "mon-entreprise-api",
+  "name": "site-optae-api",
   "version": "0.1.0",
   "private": true,
   "description": "A Strapi application",
@@ -9,16 +9,19 @@
     "deploy": "strapi deploy",
     "dev": "strapi develop",
     "develop": "strapi develop",
+    "seed:example": "node ./scripts/seed.js",
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
     "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.36.1",
-    "@strapi/plugin-users-permissions": "5.36.1",
-    "@strapi/strapi": "5.36.1",
+    "@strapi/plugin-cloud": "5.37.1",
+    "@strapi/plugin-users-permissions": "5.37.1",
+    "@strapi/strapi": "5.37.1",
     "better-sqlite3": "12.4.1",
+    "fs-extra": "^10.0.0",
+    "mime-types": "^2.1.27",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
@@ -35,7 +38,7 @@
     "npm": ">=6.0.0"
   },
   "strapi": {
-    "uuid": "0cb491ca-88aa-48f2-b483-af724f3fbde6",
-    "installId": "fc5b321f54559cba21b501371f80c00555dcc5be71e70a9ea866647907151bd9"
+    "uuid": "df830e39-8794-4f9b-853e-771938537254",
+    "installId": "bef385bb396777aece869111263abd5105f8d24b3e6e0d568cac7309319b0da3"
   }
 }

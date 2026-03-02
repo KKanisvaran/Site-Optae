@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pags",
+  "info": {
+    "singularName": "pag",
+    "pluralName": "pags",
+    "displayName": "Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Title"
+    },
+    "Content": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.rich-text",
+        "shared.slider",
+        "shared.seo",
+        "shared.quote",
+        "shared.media"
+      ]
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pag.pag"
+    }
+  }
+}
