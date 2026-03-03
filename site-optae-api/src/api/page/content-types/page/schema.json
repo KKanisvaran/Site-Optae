@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "pags",
+  "collectionName": "pages",
   "info": {
-    "singularName": "pag",
-    "pluralName": "pags",
+    "singularName": "page",
+    "pluralName": "pages",
     "displayName": "Page"
   },
   "options": {
@@ -21,9 +21,9 @@
     "Content": {
       "type": "dynamiczone",
       "components": [
-        "shared.rich-text",
         "shared.slider",
         "shared.seo",
+        "shared.rich-text",
         "shared.quote",
         "shared.media"
       ]
@@ -31,7 +31,7 @@
     "parent": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::pag.pag"
+      "target": "api::page.page"
     }
   }
 }

@@ -600,6 +600,43 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCollaborateurCollaborateur
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'collaborateurs';
+  info: {
+    displayName: 'Collaborateur';
+    pluralName: 'collaborateurs';
+    singularName: 'collaborateur';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Bio: Schema.Attribute.Blocks;
+    Bureau: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Email: Schema.Attribute.String;
+    linkedin: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::collaborateur.collaborateur'
+    > &
+      Schema.Attribute.Private;
+    Nom: Schema.Attribute.String;
+    Photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Poste: Schema.Attribute.String;
+    Prenom: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    Slug: Schema.Attribute.UID<'Nom'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -632,12 +669,12 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiPagPag extends Struct.CollectionTypeSchema {
-  collectionName: 'pags';
+export interface ApiPagePage extends Struct.CollectionTypeSchema {
+  collectionName: 'pages';
   info: {
     displayName: 'Page';
-    pluralName: 'pags';
-    singularName: 'pag';
+    pluralName: 'pages';
+    singularName: 'page';
   };
   options: {
     draftAndPublish: true;
@@ -645,9 +682,9 @@ export interface ApiPagPag extends Struct.CollectionTypeSchema {
   attributes: {
     Content: Schema.Attribute.DynamicZone<
       [
-        'shared.rich-text',
         'shared.slider',
         'shared.seo',
+        'shared.rich-text',
         'shared.quote',
         'shared.media',
       ]
@@ -656,15 +693,46 @@ export interface ApiPagPag extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::pag.pag'> &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'> &
       Schema.Attribute.Private;
-    parent: Schema.Attribute.Relation<'oneToOne', 'api::pag.pag'>;
+    parent: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>;
     publishedAt: Schema.Attribute.DateTime;
     Slug: Schema.Attribute.UID<'Title'>;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStatStat extends Struct.CollectionTypeSchema {
+  collectionName: 'stats';
+  info: {
+    displayName: 'Stat';
+    pluralName: 'stats';
+    singularName: 'stat';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.String;
+    Icons: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::stat.stat'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Value: Schema.Attribute.BigInteger;
   };
 }
 
@@ -1184,8 +1252,10 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::collaborateur.collaborateur': ApiCollaborateurCollaborateur;
       'api::global.global': ApiGlobalGlobal;
-      'api::pag.pag': ApiPagPag;
+      'api::page.page': ApiPagePage;
+      'api::stat.stat': ApiStatStat;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
