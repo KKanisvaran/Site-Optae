@@ -3,9 +3,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --optae-blue: #1B2A6B;
+  --optae-blue: #12144D;
   --optae-accent: #4F5E8A;
   --optae-light: #DCE6FF;
+  --hover-text : #338CB8;
 }
 
 @theme inline {
