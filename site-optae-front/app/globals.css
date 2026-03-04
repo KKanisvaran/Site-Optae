@@ -7,6 +7,12 @@
   --optae-accent: #4F5E8A;
   --optae-light: #DCE6FF;
   --hover-text : #338CB8;
+  --optae-terra: #C4623A;
+  --optae-coral: #E8856A;
+  --optae-terra-light: #F5E8E3;
+  --optae-marine: #1B3A6B; 
+  --optae-beige: #F5EDD8;
+  --optae-violet: #7B5EA7;
 }
 
 @theme inline {
