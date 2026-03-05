@@ -1,3 +1,4 @@
+import React from 'react';
 import Collaborateur from "@/_components/Collaborateur";
 
 async function getCollaborateurs() {

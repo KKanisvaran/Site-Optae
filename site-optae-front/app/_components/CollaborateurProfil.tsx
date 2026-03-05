@@ -71,7 +71,7 @@ export default function CollaborateurProfil({ collaborateur }: { collaborateur: 
                         </div>
                     </div>
 
-                    {/* Portrait avec ombre portée premium */}
+                    {/* Portrait avec ombre portée  */}
                     <div className="relative w-64 h-80 rounded-2xl overflow-hidden flex-shrink-0 shadow-2xl"
                         style={{ boxShadow: "0 24px 48px rgba(0,0,0,0.4)" }}>
                         {photo?.url ? (

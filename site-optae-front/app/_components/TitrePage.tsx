@@ -9,7 +9,7 @@ const titres: { [key: string]: string } = {
     "/services": "SERVICES",
     "/realisations": "RÉALISATIONS",
     "/carrieres": "CARRIÈRES",
-    "/nous-contacter": "NOUS CONTACTER",
+    "/contact": "NOUS CONTACTER",
 };
 
 export function TitrePage() {

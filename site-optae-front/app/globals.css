@@ -137,3 +137,19 @@ body {
 img {
   filter: none !important;
 }
+@theme inline {
+  /* On garde ou on ajoute cette variable pour Tailwind */
+  --animate-pulse-slow: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* L'unique animation nécessaire pour le fond "nuageux" */
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 0.1; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.2; 
+    transform: scale(1.05); 
+  }
+}
