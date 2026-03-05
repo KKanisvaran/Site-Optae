@@ -1,32 +1,19 @@
-// app/(main)/page.tsx
-import Hero from "@/_components/Hero";
-
-async function getHomePageData() {
-    // On appelle l'endpoint des statistiques (ou de la page accueil) dans Strapi
-    // Assure-toi que l'URL correspond à ton installation Strapi
-    const endpoint = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/homepage?populate[0]=Stats&populate[1]=Stats.Icons`; 
-    
-    try {
-        const response = await fetch(endpoint, { next: { revalidate: 0 } });
-        const jsonResponse = await response.json();
-        // On retourne le tableau de stats (ajuste le chemin selon ta structure Strapi)
-        return jsonResponse.data?.attributes?.Stats || []; 
-    } catch (error) {
-        console.error("Erreur Strapi:", error);
-        return [];
-    }
+import CardStats from "@/_components/CardStat";
+async function getStats() {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/stats?populate=*`);
+    const json = await response.json();
+    return json.data;
 }
 
-export default async function HomePage() {
-    // Récupération des données depuis Strapi au moment du rendu (Server Side)
-    const stats = await getHomePageData();
+export default async function ServicesPage() {
+    const stats = await getStats();
+
+    
+    const quatreStats = stats.slice(0, 4);
 
     return (
         <main>
-            {/* On envoie les données fraîches de Strapi au composant Hero */}
-            <Hero stats={stats} />
-            
-            {/* Tu peux ajouter ici d'autres composants qui utilisent Strapi */}
+            <CardStats stats={quatreStats} />
         </main>
     );
 }

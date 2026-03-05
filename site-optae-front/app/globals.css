@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* --------------------------------------------------------------------------
+   1. VARIABLES DE DESIGN (DESIGN TOKENS)
+   --------------------------------------------------------------------------
+   Centralisation des couleurs de la charte OPTAE pour une maintenance facile.
+   L'utilisation de variables permet de changer une couleur sur tout le site en une ligne.
+*/
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -15,29 +21,98 @@
   --optae-violet: #7B5EA7;
 }
 
+/* --------------------------------------------------------------------------
+   2. CONFIGURATION DU THÈME TAILWIND v4
+   --------------------------------------------------------------------------
+*/
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   
-  /* Animations et timings pour la sidebar et les effets visuels */
+  /* Timings personnalisés pour les interactions UI */
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --transition-timing-function-cubic: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* IMPORTANT : On force le fond en blanc et le texte en noir.
-   On retire toute détection automatique du mode sombre (dark mode) 
-   pour que le design "Premium" d'OPTAE reste constant.
+/* --------------------------------------------------------------------------
+   3. STYLES DE BASE (BASE LAYER)
+   --------------------------------------------------------------------------
+   On force le rendu "Light Mode" pour préserver l'identité 
 */
 body {
   background: #ffffff !important;
   color: #171717 !important;
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased; /* Rendu des polices plus fin sur Mac/iOS */
 }
 
-/* Personnalisation de la barre de défilement pour la sidebar */
+/* --------------------------------------------------------------------------
+   4. MOTEUR DE RENDU POUR LE CONTENU STRAPI (RICH TEXT)
+   --------------------------------------------------------------------------
+   Cible les éléments générés par le composant StrapiContent.
+   Note sur les unités :
+   - 'rem' (Root Em) : Unité relative à la taille de police racine (HTML). 
+     1rem = 16px par défaut. C'est plus accessible que les 'px'.
+   - 'leading-relaxed' : Augmente l'interligne pour une meilleure lisibilité.
+*/
+
+.strapi-content-renderer {
+    @apply text-sm leading-relaxed;
+    color: var(--optae-blue);
+}
+
+/* --- Typographie des Titres --- */
+.strapi-content-renderer h1,
+.strapi-content-renderer h2,
+.strapi-content-renderer h3 {
+    @apply font-bold mb-4 mt-6;
+    color: var(--optae-marine);
+}
+
+/* h1 = 32px (2 * 16px) */
+.strapi-content-renderer h1 {
+    font-size: 2rem; 
+    line-height: 1.2;
+}
+
+/* h2 = 20px (1.25 * 16px) */
+.strapi-content-renderer h2 {
+    font-size: 1.25rem;
+}
+
+/* --- Gestion des Paragraphes --- */
+.strapi-content-renderer p {
+    @apply mb-4;
+}
+
+/* --- SYSTÈME DE LISTES (Expertises & Bio) --- 
+   'list-outside' : Aligne les puces à l'extérieur du bloc de texte.
+   'marker' : Cible spécifiquement la couleur des "boules".
+*/
+.strapi-content-renderer ul {
+    @apply list-disc list-outside mb-6 ml-5 space-y-2;
+}
+
+.strapi-content-renderer li::marker {
+    color: #3b82f6; /* Bleu vif pour les puces */
+    @apply font-bold;
+}
+
+/* --- Blocs de Code (Syntax Highlighting) --- */
+.strapi-content-renderer code {
+    @apply bg-gray-100 px-1.5 py-0.5 rounded font-mono text-[0.85rem];
+    color: #e11d48; /* Accentuation rubis pour les extraits techniques */
+}
+
+/* --------------------------------------------------------------------------
+   5. COMPOSANTS UI & UTILITAIRES
+   --------------------------------------------------------------------------
+*/
+
+/* Barre de défilement discrète pour la navigation */
 .custom-scrollbar::-webkit-scrollbar {
   width: 4px;
 }
@@ -51,14 +126,14 @@ body {
   border-radius: 10px;
 }
 
-/* Classe utilitaire pour l'ouverture fluide du menu Sommaire */
+/* Animation fluide pour les éléments de la Sidebar */
 .transition-sidebar {
   transition-property: transform, opacity, visibility;
   transition-duration: 600ms;
   transition-timing-function: var(--transition-timing-function-cubic);
 }
 
-/* Ajustement pour éviter que les images (logo) ne soient inversées par certains navigateurs */
+/* Sécurité anti-inversion (évite les filtres automatiques des navigateurs) */
 img {
   filter: none !important;
 }

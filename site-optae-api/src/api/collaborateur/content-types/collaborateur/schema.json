@@ -45,6 +45,12 @@
     "Slug": {
       "type": "uid",
       "targetField": "Nom"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "expertises": {
+      "type": "blocks"
     }
   }
 }

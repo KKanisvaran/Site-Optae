@@ -617,7 +617,9 @@ export interface ApiCollaborateurCollaborateur
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Description: Schema.Attribute.Text;
     Email: Schema.Attribute.String;
+    expertises: Schema.Attribute.Blocks;
     linkedin: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
