@@ -12,6 +12,7 @@ export default async function Header({ title = "ACCUEIL" }: { title?: string }) 
 
   return (
     <header className="relative w-full">
+
       {/* SECTION HERO */}
       <div className="relative h-[440px] w-full overflow-hidden bg-[#1B2A6B]">
         

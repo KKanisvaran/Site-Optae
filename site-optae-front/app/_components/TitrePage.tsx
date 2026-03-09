@@ -10,6 +10,7 @@ const titres: { [key: string]: string } = {
     "/realisations": "RÉALISATIONS",
     "/carrieres": "CARRIÈRES",
     "/contact": "NOUS CONTACTER",
+    
 };
 
 export function TitrePage() {
@@ -21,7 +22,7 @@ export function TitrePage() {
             <span className="text-lg md:text-xl tracking-[0.3em] text-[#1B2A6B] font-light uppercase">
                 NOS ÉQUIPES
             </span>
-        );
+        )
     }
 
     const titre = titres[pathname] || "";

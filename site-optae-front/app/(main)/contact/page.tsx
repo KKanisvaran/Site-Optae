@@ -60,6 +60,11 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex flex-col gap-2">
+                  <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Votre entreprise</label>
+                  <input type="text" className="border-b border-gray-200 py-2 focus:border-[#1B2A6B] outline-none transition-colors" placeholder="Ex: Jean" />
+                </div>
+
+                <div className="flex flex-col gap-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Sujet</label>
                   <input type="text" className="border-b border-gray-200 py-2 focus:border-[#1B2A6B] outline-none transition-colors" placeholder="L'objet de votre demande" />
                 </div>

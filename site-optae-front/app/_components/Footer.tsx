@@ -18,7 +18,6 @@ export default function Footer() {
   const [showMapParis, setShowMapParis] = useState(false);
   const [showMapGenay, setShowMapGenay] = useState(false);
 
-  // Liens de redirection vers Google Maps pour l'itinéraire
   const urlItineraireParis = "https://www.google.com/maps/dir/?api=1&destination=91+Avenue+de+la+Republique+75011+Paris";
   const urlItineraireGenay = "https://www.google.com/maps/dir/?api=1&destination=158+rue+de+la+Madone+69730+Genay";
 
@@ -54,14 +53,14 @@ export default function Footer() {
           
           {/* Nos Bureaux */}
           <div className="lg:col-span-2 space-y-6">
-            <p className="text-[10px] tracking-widest uppercase font-bold text-white/40 text-center sm:text-center">Nos Bureaux</p>
+            <p className="text-[10px] tracking-widest uppercase font-bold text-white text-center sm:text-center">Nos Bureaux</p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 text-sm">
               
               {/* Agence PARIS */}
               <div className="flex flex-col">
                 <div className="text-center sm:text-left space-y-2 min-h-[140px] sm:min-h-[120px]">
-                  <p className="text-[#4F5E8A] font-bold text-[11px] uppercase tracking-wider">Paris</p>
+                  <p className="text-white font-bold text-[11px] uppercase tracking-wider">Paris</p>
                   <p className="italic text-white/80">91 Avenue de la République, 75011 Paris</p>
                   <a href="tel:+33149289343" className="flex items-center justify-center sm:justify-start gap-2 hover:text-white transition-colors group">
                     <Phone size={16} className="text-[#4F5E8A]" />
@@ -70,7 +69,7 @@ export default function Footer() {
                   
                   <button 
                     onClick={() => setShowMapParis(!showMapParis)}
-                    className="flex items-center justify-center sm:justify-start gap-2 text-[10px] uppercase font-bold text-[#4F5E8A] hover:text-white transition-all pt-2"
+                    className="flex items-center justify-center sm:justify-start gap-2 text-[10px] uppercase font-bold text-white/60 hover:text-white transition-all pt-2"
                   >
                     <MapPin size={14} /> 
                     {showMapParis ? "Masquer la carte" : "Voir sur la carte"}
@@ -102,16 +101,17 @@ export default function Footer() {
               {/* Agence GENAY (Siège) */}
               <div className="flex flex-col border-t border-white/5 pt-6 sm:border-t-0 sm:pt-0 sm:border-l sm:pl-8">
                 <div className="text-center sm:text-left space-y-2 min-h-[140px] sm:min-h-[120px]">
-                  <p className="text-[#4F5E8A] font-bold text-[11px] uppercase tracking-wider">Genay (Siège)</p>
+                  <p className="text-white font-bold text-[11px] uppercase tracking-wider">Genay (Siège)</p>
                   <p className="italic text-white/80">158 rue de la Madone, 69730 Genay</p>
-                  <div className="flex items-center justify-center sm:justify-start gap-2 text-white/80 font-medium">
-                    <Printer size={16} className="text-[#4F5E8A]" />
-                    <span>Fax : 04 78 91 38 63</span>
-                  </div>
+                  <a href="tel:+33149289343" className="flex items-center justify-center sm:justify-start gap-2 hover:text-white transition-colors group">
+                    <Phone size={16} className="text-[#4F5E8A]" />
+                    <span className="font-semibold text-white">01 49 28 93 43</span>
+                  </a>
+             
                   
                   <button 
                     onClick={() => setShowMapGenay(!showMapGenay)}
-                    className="flex items-center justify-center sm:justify-start gap-2 text-[10px] uppercase font-bold text-[#4F5E8A] hover:text-white transition-all pt-2"
+                    className="flex items-center justify-center sm:justify-start gap-2 text-[10px] uppercase font-bold text-white/60 hover:text-white transition-all pt-2"
                   >
                     <MapPin size={14} /> 
                     {showMapGenay ? "Masquer la carte" : "Voir sur la carte"}
@@ -142,24 +142,22 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Groupe TIM HD  */}
+          {/* Groupe TIM HD */}
           <div className="text-center space-y-6">
-            <p className="text-[10px] tracking-widest uppercase font-bold text-white/40">Groupe TIM HD</p>
+            <p className="text-[10px] tracking-widest uppercase font-bold text-white">Groupe TIM HD</p>
             <div className="flex gap-6 justify-center items-center">
               {[ 
                 { name: "Trackoé", src: "/logos/logo_trackoe.png", url: "https://trackoe.fr" },
                 { name: "Infinitri", src: "/logos/logo_infinitri.png", url: "https://infinitri.eco" }
               ].map((subsidiary) => (
                 <a key={subsidiary.name} href={subsidiary.url} target="_blank" className="group" rel="noopener noreferrer">
-                  <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center bg-white/5 rounded-2xl border border-white/10 group-hover:bg-white/10 group-hover:border-white/30 transition-all p-4">
-                    <Image 
-                      src={subsidiary.src} 
-                      alt={subsidiary.name} 
-                      width={100} 
-                      height={100} 
-                      className="object-contain brightness-0 invert opacity-50 group-hover:opacity-100 transition-opacity" 
-                    />
-                  </div>
+                  <Image 
+                    src={subsidiary.src} 
+                    alt={subsidiary.name} 
+                    width={140} 
+                    height={70} 
+                    className="object-contain brightness-0 invert opacity-60 group-hover:opacity-100 transition-opacity" 
+                  />
                 </a>
               ))}
             </div>
@@ -167,7 +165,7 @@ export default function Footer() {
 
           {/* Réseaux Sociaux */}
           <div className="flex flex-col items-center lg:items-end space-y-6">
-            <p className="text-[10px] tracking-widest uppercase font-bold text-white/40">Suivez-nous</p>
+            <p className="text-[10px] tracking-widest uppercase font-bold text-white">Suivez-nous</p>
             <div className="flex gap-4">
               <Link href="https://fr.linkedin.com/company/optae" target="_blank" className="p-4 bg-white/5 rounded-full hover:bg-white hover:text-[#12144D] transition-all group shadow-inner">
                 <Linkedin size={24} className="group-hover:scale-110 transition-transform" /> 

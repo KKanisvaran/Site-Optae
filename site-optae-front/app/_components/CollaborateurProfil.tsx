@@ -25,9 +25,9 @@ export default function CollaborateurProfil({ collaborateur }: { collaborateur: 
                     {/* Contenu textuel */}
                     <div className="flex-1 text-white">
                         <Link href="/nos-equipes"
-                            className="flex items-center gap-2 text-xs uppercase tracking-widest mb-8 opacity-60 hover:opacity-100 transition-opacity"
-                            style={{ color: "var(--optae-coral)" }}>
-                            ← Back to our people
+                            className="flex items-center gap-2 text-xs uppercase tracking-widest mb-8 opacity-60  hover:opacity-100 transition-opacity"
+                            style={{ color: "var(--optae-light)" }}>
+                            ← Back to our people        
                         </Link>
 
                         <h1 className="text-3xl md:text-5xl font-bold mb-2 text-white">
@@ -35,7 +35,7 @@ export default function CollaborateurProfil({ collaborateur }: { collaborateur: 
                         </h1>
 
                         <p className="text-sm font-bold uppercase tracking-widest mb-4"
-                            style={{ color: "var(--optae-coral)" }}>
+                            style={{ color: "var(--optae-blue-extra-light)" }}>
                             {collaborateur.Poste}
                         </p>
 
@@ -49,8 +49,8 @@ export default function CollaborateurProfil({ collaborateur }: { collaborateur: 
                                 href={collaborateur.Email ? `mailto:${collaborateur.Email}` : "#"}
                                 className="flex items-center gap-2 px-4 py-2 rounded-full border text-xs uppercase tracking-widest transition-all hover:bg-white/10"
                                 style={{
-                                    borderColor: "var(--optae-coral)",
-                                    color: "var(--optae-coral)",
+                                    borderColor: "var(hover-text)",
+                                    color: "var(hover-text)",
                                     opacity: collaborateur.Email ? 1 : 0.4,
                                 }}
                             >
@@ -61,8 +61,8 @@ export default function CollaborateurProfil({ collaborateur }: { collaborateur: 
                                 target="_blank"
                                 className="flex items-center gap-2 px-4 py-2 rounded-full border text-xs uppercase tracking-widest transition-all hover:bg-white/10"
                                 style={{
-                                    borderColor: "var(--optae-coral)",
-                                    color: "var(--optae-coral)",
+                                    borderColor: "var(hover-text)",
+                                    color: "var(hover-text)",
                                     opacity: collaborateur.linkedin ? 1 : 0.4,
                                 }}
                             >
@@ -76,7 +76,9 @@ export default function CollaborateurProfil({ collaborateur }: { collaborateur: 
                         style={{ boxShadow: "0 24px 48px rgba(0,0,0,0.4)" }}>
                         {photo?.url ? (
                             <Image
-                                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${photo.url}`}
+                                src={photo.url.startsWith('http') 
+                                ? photo.url 
+                                : `${process.env.NEXT_PUBLIC_STRAPI_URL}${photo.url}`}
                                 alt={`${collaborateur.Prenom} ${collaborateur.Nom}`}
                                 fill
                                 className="object-cover object-top"
@@ -110,7 +112,7 @@ export default function CollaborateurProfil({ collaborateur }: { collaborateur: 
                     <div className="strapi-content-renderer">
                         <h2 className="text-xs font-bold uppercase tracking-widest mb-6"
                             style={{ color: "var(--optae-violet)" }}>
-                            Biographie
+                            A propos de {collaborateur.Prenom}
                         </h2>
                         <StrapiContent content={collaborateur.Bio} />
                     </div>

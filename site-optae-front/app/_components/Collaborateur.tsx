@@ -25,7 +25,7 @@ export default function Collaborateur({ collaborateurs }: { collaborateurs: any[
                                 onMouseEnter={e => {
                                     (e.currentTarget as HTMLElement).style.boxShadow = "0 24px 48px rgba(18,20,77,0.12)";
                                     (e.currentTarget as HTMLElement).style.transform = "translateY(-5px)";
-                                    (e.currentTarget as HTMLElement).style.borderColor = "var(--optae-terra)";
+                                    (e.currentTarget as HTMLElement).style.borderColor = "var(--optae-blue-extra-light)";
                                 }}
                                 onMouseLeave={e => {
                                     (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 16px rgba(18,20,77,0.06)";
@@ -37,7 +37,9 @@ export default function Collaborateur({ collaborateurs }: { collaborateurs: any[
                                 <div className="relative w-full h-90 overflow-hidden">
                                     {photo?.url ? (
                                         <Image
-                                            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${photo.url}`}
+                                            src ={photo.url.startsWith('http') 
+                                            ? photo.url 
+                                            : `${process.env.NEXT_PUBLIC_STRAPI_URL}${photo.url}`}
                                             alt={`${collaborateur.Prenom} ${collaborateur.Nom}`}
                                             fill
                                             className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
@@ -58,7 +60,7 @@ export default function Collaborateur({ collaborateurs }: { collaborateurs: any[
                                     <h3 className="text-lg font-bold mb-1" style={{ color: "var(--optae-blue)" }}>
                                         {collaborateur.Prenom} {collaborateur.Nom}
                                     </h3>
-                                    <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "var(--optae-terra)" }}>
+                                    <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "var(--optae-blue-light)" }}>
                                         {collaborateur.Poste}
                                     </p>
 
@@ -71,7 +73,7 @@ export default function Collaborateur({ collaborateurs }: { collaborateurs: any[
 
                                     {/* Bouton voir profil */}
                                     <div className="mt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                                        style={{ color: "var(--optae-terra)" }}>
+                                        style={{ color: "var(--optae-foreground)" }}>
                                         Voir le profil →
                                     </div>
 
@@ -80,13 +82,13 @@ export default function Collaborateur({ collaborateurs }: { collaborateurs: any[
                                         <svg viewBox="0 0 400 60" xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M0,30 C100,60 300,0 400,30 L400,60 L0,60 Z"
-                                                fill="var(--optae-coral)"
-                                                opacity="0.15"
+                                                fill="var(--optae-blue-extra-light)"
+                                                opacity="0.55"
                                             />
                                             <path
                                                 d="M0,40 C150,10 250,60 400,35 L400,60 L0,60 Z"
-                                                fill="var(--optae-terra)"
-                                                opacity="0.10"
+                                                fill="var(--optae-blue-light)"
+                                                opacity="0.45"
                                             />
                                         </svg>
                                     </div>

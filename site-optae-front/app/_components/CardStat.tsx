@@ -49,7 +49,9 @@ export default function Hero({ stats }: { stats: any[] }) {
                                         }}
                                     >
                                         <Image
-                                            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${icon.url}`}
+                                            src={icon.url.startsWith('http') 
+                                            ? icon.url 
+                                            : `${process.env.NEXT_PUBLIC_STRAPI_URL}${icon.url}`}
                                             alt={item.Title || "stat-icon"}
                                             fill
                                             className="object-contain"
