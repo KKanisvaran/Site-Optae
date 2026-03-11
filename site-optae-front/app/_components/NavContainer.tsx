@@ -59,7 +59,7 @@ export default function NavContainer({ pages }: { pages: any[] }) {
         <li key={page.id} className="border-b border-gray-50">
           <div className="flex items-center justify-between py-4 group">
             <Link
-              href={`/${page.Slug}`}
+              href="/"
               onClick={() => setIsSidebarOpen(false)}
               className="text-2xl font-light hover:pl-2 transition-all"
               style={{ color: 'var(--optae-blue)' }}

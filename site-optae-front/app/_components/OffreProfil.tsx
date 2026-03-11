@@ -72,15 +72,15 @@ export default function OffreProfil({ offre }: { offre: any }) {
             </section>
 
             {/* --- VAGUE DE TRANSITION --- */}
-            <div style={{ background: "var(--optae-marine)", marginBottom: "-2px" }}>
-                <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-20">
-                    <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="var(--optae-blanc)" />
-                    <path d="M0,55 C400,20 1000,70 1440,50 L1440,80 L0,80 Z" fill="var(--optae-blanc)" opacity="0.5" />
+            <div style={{ background: "var(--optae-marine)", marginBottom: "-2px", lineHeight: 0 }}>
+                <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-20" style={{display : "block"}}>
+                    <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="white" />
+                    <path d="M0,55 C400,20 1000,70 1440,50 L1440,80 L0,80 Z" fill="white" opacity="0.5" />
                 </svg>
             </div>
 
-            {/* --- SECTION CONTENU (Beige) --- */}
-            <section className="flex-grow w-full px-6 md:px-16 py-16" style={{ background: "var(--optae-blanc)" }}>
+            {/* --- SECTION CONTENU  --- */}
+            <section className="flex-grow w-full px-6 md:px-16 py-16" style={{ background: "white" }}>
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
 
                     {/* Description du poste */}
@@ -98,7 +98,7 @@ export default function OffreProfil({ offre }: { offre: any }) {
                             style={{ color: "var(--optae-violet)" }}>
                             Compétences requises
                         </h2>
-                        <StrapiContent content={offre?.Competences_requises} />
+                        <StrapiContent content={offre?.competences_requises} />
                     </div>
                 </div>
             </section>

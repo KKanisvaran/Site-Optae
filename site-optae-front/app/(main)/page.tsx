@@ -30,17 +30,23 @@ export default async function HomePage() {
     const stats = await getStats();
     const quatreStats = stats.slice(0, 4);
 
-    const banniere1 = slides.filter((s: any) => s.Nom === "banniere1");
-    const banniere2 = slides.filter((s: any) => s.Nom === "banniere2");
-    const banniere3 = slides.filter((s: any) => s.Nom === "banniere3");
-    const banniere4 = slides.filter((s: any) => s.Nom === "banniere4");
+    const bannieres = slides.reduce((acc: any, slide: any) => {
+    const nom = slide.Nom;
+    if (!acc[nom]) acc[nom] = [];
+    acc[nom].push(slide);
+    return acc;
+    }, {});
+
+    // Trier les bannieres par nom (banniere1, banniere2, ...)
+    const bannieresTriees = Object.entries(bannieres)
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([_, slides]) => slides);
 
     return (
         <main>
-            {banniere1.length > 0 && <ImageCarousel slides={banniere1} />}
-            {banniere2.length > 0 && <ImageCarousel slides={banniere2} />}
-            {banniere3.length > 0 && <ImageCarousel slides={banniere3} />}
-            {banniere4.length > 0 && <ImageCarousel slides={banniere4} />}
+            {bannieresTriees.map((groupe: any, i: number) => (
+                <ImageCarousel key={i} slides={groupe} />
+            ))}
             {quatreStats.length > 0 && <CardStats stats={quatreStats} />}
         </main>
     );

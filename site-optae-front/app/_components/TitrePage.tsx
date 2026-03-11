@@ -5,11 +5,12 @@ import { usePathname } from "next/navigation";
 const titres: { [key: string]: string } = {
     "/": "ACCUEIL",
     "/nos-equipes": "NOS ÉQUIPES",
-    "/optae": "OPTAE",
+    "/à-propos": "À propos",
     "/services": "SERVICES",
     "/realisations": "RÉALISATIONS",
     "/carrieres": "CARRIÈRES",
     "/contact": "NOUS CONTACTER",
+    "/collectivites": "COLLECTIVITÉS",
     
 };
 

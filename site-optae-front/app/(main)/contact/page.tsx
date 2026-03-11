@@ -1,12 +1,30 @@
-import React from 'react';
-import {Mail,Phone,MapPin,} from "lucide-react"; 
+"use client"; // Obligatoire pour gérer l'envoi et les messages de succès
 
+import React, { useState } from 'react';
+import { Mail, Phone, MapPin } from "lucide-react"; 
+import { sendEmail } from "@/actions/sendEmail";
 
 export default function ContactPage() {
+  const [isPending, setIsPending] = useState(false);
+  const [status, setStatus] = useState<{ type: 'success' | 'error', msg: string } | null>(null);
+
+  async function handleFormAction(formData: FormData) {
+    setIsPending(true);
+    setStatus(null);
+    
+    const result = await sendEmail(formData);
+    
+    setIsPending(false);
+    if (result.success) {
+      setStatus({ type: 'success', msg: "Votre message a été envoyé avec succès !" });
+    } else {
+      setStatus({ type: 'error', msg: "Une erreur est survenue lors de l'envoi." });
+    }
+  }
+
   return (
     <main className="min-h-screen bg-slate-50">
-
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 pt-40"> {/* pt-40 pour laisser de la place au header */}
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             
@@ -41,42 +59,53 @@ export default function ContactPage() {
                   </div>
                   <span className="text-gray-700 font-medium"> 01 49 28 93 43</span>
                 </a>
-                 
               </div>
             </div>
 
             {/* COLONNE DROITE : LE FORMULAIRE */}
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-              <form className="space-y-6">
+              <form action={handleFormAction} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Nom</label>
-                    <input type="text" className="border-b border-gray-200 py-2 focus:border-[#1B2A6B] outline-none transition-colors" placeholder="Ex: Dupont" />
+                    <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Nom / Prénom</label>
+                    {/* On utilise 'senderName' pour correspondre à l'action */}
+                    <input name="senderName" type="text" required className="border-b border-gray-200 py-2 focus:border-[#1B2A6B] outline-none transition-colors" placeholder="Ex: Jean Dupont" />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Prénom</label>
-                    <input type="text" className="border-b border-gray-200 py-2 focus:border-[#1B2A6B] outline-none transition-colors" placeholder="Ex: Jean" />
+                    <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Email</label>
+                    {/* On utilise 'senderEmail' pour correspondre à l'action */}
+                    <input name="senderEmail" type="email" required className="border-b border-gray-200 py-2 focus:border-[#1B2A6B] outline-none transition-colors" placeholder="jean@entreprise.com" />
                   </div>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Votre entreprise</label>
-                  <input type="text" className="border-b border-gray-200 py-2 focus:border-[#1B2A6B] outline-none transition-colors" placeholder="Ex: Jean" />
                 </div>
 
                 <div className="flex flex-col gap-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Sujet</label>
-                  <input type="text" className="border-b border-gray-200 py-2 focus:border-[#1B2A6B] outline-none transition-colors" placeholder="L'objet de votre demande" />
+                  <input name="subject" type="text" required className="border-b border-gray-200 py-2 focus:border-[#1B2A6B] outline-none transition-colors" placeholder="L'objet de votre demande" />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Votre entreprise</label>
+                  <input name="company" type="text" required className="border-b border-gray-200 py-2 focus:border-[#1B2A6B] outline-none transition-colors" placeholder="Nom de votre entreprise" />
                 </div>
 
                 <div className="flex flex-col gap-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Message</label>
-                  <textarea rows={4} className="border border-gray-200 p-3 rounded-lg focus:border-[#1B2A6B] outline-none transition-colors resize-none" placeholder="Comment pouvons-nous vous aider ?" />
+                  <textarea name="message" rows={4} required className="border border-gray-200 p-3 rounded-lg focus:border-[#1B2A6B] outline-none transition-colors resize-none" placeholder="Comment pouvons-nous vous aider ?" />
                 </div>
 
-                <button className="w-full bg-[#1B2A6B] text-white py-4 rounded-xl font-bold hover:bg-[#253785] transition-all shadow-lg shadow-blue-900/10">
-                  Envoyer le message
+                <button 
+                  type="submit"
+                  disabled={isPending}
+                  className="w-full bg-[#1B2A6B] text-white py-4 rounded-xl font-bold hover:bg-[#253785] transition-all shadow-lg shadow-blue-900/10 disabled:bg-gray-400"
+                >
+                  {isPending ? "Envoi en cours..." : "Envoyer le message"}
                 </button>
+
+                {status && (
+                  <p className={`text-center text-sm font-bold ${status.type === 'success' ? 'text-green-600' : 'text-red-500'}`}>
+                    {status.msg}
+                  </p>
+                )}
               </form>
             </div>
 

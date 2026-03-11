@@ -1,12 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Slide {
   id: number;
   Titre: string;
   Description: string;
   Image: { url: string }[];
+  Lien?: string;
 }
 
 export default function ImageCarousel({ slides }: { slides: Slide[] }) {
@@ -32,6 +34,8 @@ export default function ImageCarousel({ slides }: { slides: Slide[] }) {
     return `${STRAPI_URL}${cleanUrl}`;
   }
 
+  const lien = slides[current].Lien;
+
   return (
     <div className="relative w-full h-[250px] md:h-[400px] overflow-hidden bg-[#1B2A6B] mb-4">
 
@@ -52,7 +56,6 @@ export default function ImageCarousel({ slides }: { slides: Slide[] }) {
               priority={index === 0}
             />
           )}
-          {/* Dégradé léger pour lisibilité du texte */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/40" />
         </div>
       ))}
@@ -89,12 +92,20 @@ export default function ImageCarousel({ slides }: { slides: Slide[] }) {
               ))}
             </div>
           )}
-          <div className="flex items-center gap-2 group cursor-pointer ml-auto">
-            <span className="text-[9px] text-white/60 tracking-[0.4em] uppercase group-hover:text-white transition-colors">
-              En savoir plus
-            </span>
-            <span className="text-white/50 group-hover:text-white group-hover:translate-x-1 inline-block transition-all duration-300">→</span>
-          </div>
+
+          {lien ? (
+            <Link href={lien} className="flex items-center gap-2 group cursor-pointer ml-auto">
+              <span className="text-[9px] text-white/60 tracking-[0.4em] uppercase group-hover:text-white transition-colors">
+                En savoir plus
+              </span>
+              <span className="text-white/50 group-hover:text-white group-hover:translate-x-1 inline-block transition-all duration-300">→</span>
+            </Link>
+          ) : (
+            <div className="flex items-center gap-2 ml-auto opacity-40 cursor-default">
+              <span className="text-[9px] text-white tracking-[0.4em] uppercase">En savoir plus</span>
+              <span className="text-white">→</span>
+            </div>
+          )}
         </div>
       </div>
     </div>
