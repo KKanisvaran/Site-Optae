@@ -17,12 +17,11 @@ export default async function CollectivitesPage() {
         <main className="w-full py-12 md:py-20 bg-white">
             <div className="max-w-7xl mx-auto px-6 md:px-16 flex flex-col gap-6">
                 {collectivites.map((item: any) => {
-                    // Adapter la structure collectivité → format Slide attendu par ImageCarousel
                     const slides = [{
                         id: item.id,
                         Titre: item.Nom,
-                        Description: item.Description || "",
-                        Image: item.Photo || [],
+                        Description: item.Description_carousel || "",
+                        Image: item.photo_carousel || [],
                         Lien: `/collectivites/${item.Slug}`,
                     }];
 

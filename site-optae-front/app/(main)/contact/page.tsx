@@ -51,7 +51,7 @@ export default function ContactPage() {
                   <div className="w-10 h-10 rounded-full bg-[#1B2A6B]/10 flex items-center justify-center text-[#1B2A6B]">
                     <MapPin size={16} />
                   </div>
-                  <span className="text-gray-700 font-medium">Paris, France</span>
+                  <span className="text-gray-700 font-medium">91 Avenue de la République, 75011 Paris</span>
                 </div>
                 <a href="tel:+33149289343" className="flex items-center gap-4 group cursor-pointer">
                   <div className="w-10 h-10 rounded-full bg-[#1B2A6B]/10 flex items-center justify-center text-[#1B2A6B]">

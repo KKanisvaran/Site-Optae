@@ -22,7 +22,7 @@ export async function sendEmail(formData: FormData) {
     // 2. Envoi de l'email via Resend
     const { data, error } = await resend.emails.send({
       from: "Contact Optae <onboarding@resend.dev>", // Expéditeur de test
-      to: "kkanagalingam@optae.fr", // Ton email de réception pro
+      to: "kkanagalingam@optae.fr", //  email de réception 
       
       // Objet du mail combinant le sujet et l'entreprise
       subject: `${subjectRequest || "Demande de contact"} - ${company || "Sans entreprise"}`,

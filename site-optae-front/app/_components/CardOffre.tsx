@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Clock, User, ArrowRight } from "lucide-react";
+// Ajout des nouvelles icônes nécessaires
+import { Clock, User, ArrowRight, Briefcase, MapPin, Euro, FileText } from "lucide-react";
 
 export default function CardOffre({ items }: { items: any[] }) {
     return (
@@ -29,35 +30,46 @@ export default function CardOffre({ items }: { items: any[] }) {
                         >
                             <div className="flex flex-col h-full">
 
-                                {/* Nom du poste */}
                                 <h3 className="text-2xl font-bold mb-3 text-[#1B2A6B]">
                                     {item.Nom_Poste}
                                 </h3>
 
-                                {/* Description courte */}
-                                <p className="text-sm leading-relaxed text-gray-500 flex-1 line-clamp-3 font-light mb-8">
+                                <p className="text-sm leading-relaxed text-gray-500 line-clamp-2 font-light mb-8">
                                     {item.Description_courte}
                                 </p>
 
-                                {/* Icônes Durée + Profil */}
-                                <div className="flex items-center gap-6 mb-8">
-                                    {item.duree && (
-                                        <div className="flex items-center gap-2 text-[11px] text-[#1B2A6B]/60 font-medium">
-                                            <Clock className="w-4 h-4 text-[#4F5E8A]" />
-                                            <span>{item.duree}</span>
-                                        </div>
-                                    )}
-                                    {item.profil_recherche && (
-                                        <div className="flex items-center gap-2 text-[11px] text-[#1B2A6B]/60 font-medium">
-                                            <User className="w-4 h-4 text-[#4F5E8A]" />
-                                            <span>{item.profil_recherche}</span>
-                                        </div>
-                                    )}
+                                {/* --- GRILLE DES 4 INFOS --- */}
+                                <div className="grid grid-cols-2 gap-y-4 gap-x-2 mb-10">
+                                    
+                       
+                                    {/* Type de contrat */}
+                                    <div className="flex items-center gap-2 text-[11px] text-[#1B2A6B]/70 font-medium">
+                                        <FileText className="w-4 h-4 text-[#4F5E8A]" />
+                                        <span>{item.type_de_contrat || "CDI"}</span>
+                                    </div>
+
+                                    {/* Salaire */}
+                                    <div className="flex items-center gap-2 text-[11px] text-[#1B2A6B]/70 font-medium">
+                                        <Euro className="w-4 h-4 text-[#4F5E8A]" />
+                                        <span>{item.salaire || "A définir"}</span>
+                                    </div>
+
+                                    {/* Profil*/}
+                                    <div className="flex items-center gap-2 text-[11px] text-[#1B2A6B]/70 font-medium">
+                                        <User className="w-4 h-4 text-[#4F5E8A]" />
+                                        <span>{item.profil_recherche || "Non spécifié"}</span>
+                                    </div>
+
+                                    {/* Lieu */}
+                                    <div className="flex items-center gap-2 text-[11px] text-[#1B2A6B]/70 font-medium">
+                                        <MapPin className="w-4 h-4 text-[#4F5E8A]" />
+                                        <span>{item.Lieu || "Non spécifié"}</span>
+                                    </div>
+
                                 </div>
 
-                                {/* En savoir plus + flèche */}
                                 <div className="mt-auto flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-[#1B2A6B]">
-                                    <span>En savoir plus</span>
+                                    <span>Voir l'offre</span>
                                     <ArrowRight className="w-4 h-4 opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
                                 </div>
                             </div>

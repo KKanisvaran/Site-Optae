@@ -1,5 +1,5 @@
 import React from 'react';
-import Collaborateur from "@/_components/Collaborateur";
+import Collaborateur from "@/_components/CardCollaborateur";
 
 async function getCollaborateurs() {
 

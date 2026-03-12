@@ -28,7 +28,7 @@ async function getStats() {
 export default async function HomePage() {
     const slides = await getSlides();
     const stats = await getStats();
-    const quatreStats = stats.slice(0, 4);
+    const quatreStats = stats.slice(0, 3);
 
     const bannieres = slides.reduce((acc: any, slide: any) => {
     const nom = slide.Nom;

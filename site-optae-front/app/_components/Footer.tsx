@@ -29,13 +29,15 @@ export default function Footer() {
         <div className="border-b border-white/10 pb-10 mb-10 md:pb-12 md:mb-12">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 text-center md:text-left">
-              <Image 
-                src="/logos/logo_optae.png" 
-                alt="Logo OPTAE" 
-                width={180} 
-                height={70} 
-                className="brightness-0 invert object-contain w-40 md:w-48" 
-              />
+              <div className="p-1 rounded-xl border border-white/20 bg-white/5 backdrop-blur-sm">
+                <Image 
+                  src="/logos/logo_optae.png" 
+                  alt="Logo OPTAE" 
+                  width={180} 
+                  height={70} 
+                  className="brightness-0 invert object-contain w-40 md:w-48" 
+                />
+              </div>
               <div className="hidden md:block h-10 w-[1px] bg-white/20" />
               <div>
                 <p className="text-[11px] md:text-[12px] tracking-widest uppercase font-bold text-white">Newsletter</p>
@@ -145,21 +147,31 @@ export default function Footer() {
           {/* Groupe TIM HD */}
           <div className="text-center space-y-6">
             <p className="text-[10px] tracking-widest uppercase font-bold text-white">Groupe TIM HD</p>
-            <div className="flex gap-6 justify-center items-center">
-              {[ 
-                { name: "Trackoé", src: "/logos/logo_trackoe.png", url: "https://trackoe.fr" },
-                { name: "Infinitri", src: "/logos/logo_infinitri.png", url: "https://infinitri.eco" }
-              ].map((subsidiary) => (
-                <a key={subsidiary.name} href={subsidiary.url} target="_blank" className="group" rel="noopener noreferrer">
+            <div className="flex flex-col gap-6 items-center">
+              <div className="p-3 rounded-xl border border-white/20 bg-white/5 backdrop-blur-sm">
+                <a href="https://trackoe.fr" target="_blank" rel="noopener noreferrer" className="group">
                   <Image 
-                    src={subsidiary.src} 
-                    alt={subsidiary.name} 
-                    width={140} 
-                    height={70} 
-                    className="object-contain brightness-0 invert opacity-60 group-hover:opacity-100 transition-opacity" 
+                    src="/logos/logo_trackoe.png" 
+                    alt="Trackoé" 
+                    width={200} 
+                    height={90} 
+                    className="object-contain brightness-0 invert opacity-60 group-hover:opacity-100 transition-opacity w-48" 
+                  />
+
+                </a>
+              </div>
+              <div className="w-12 h-[1px] bg-white/10" />
+              <div className="p-3 rounded-xl border border-white/20 bg-white/5 backdrop-blur-sm">
+                <a href="https://infinitri.eco" target="_blank" rel="noopener noreferrer" className="group">
+                  <Image 
+                    src="/logos/logo_infinitri.png" 
+                    alt="Infinitri" 
+                    width={200} 
+                    height={90} 
+                    className="object-contain brightness-0 invert opacity-60 group-hover:opacity-100 transition-opacity w-48" 
                   />
                 </a>
-              ))}
+              </div>
             </div>
           </div>
 

@@ -11,6 +11,8 @@ const titres: { [key: string]: string } = {
     "/carrieres": "CARRIÈRES",
     "/contact": "NOUS CONTACTER",
     "/collectivites": "COLLECTIVITÉS",
+    "/a-propos": "À PROPOS",
+    "/bureau-d-etudes": "BUREAU D'ÉTUDES",
     
 };
 

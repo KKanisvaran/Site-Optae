@@ -2,7 +2,10 @@ import NavContainer from "./NavContainer";
 import { TitrePage } from "@/_components/TitrePage";
 
 async function getPages() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/pages?populate=*`, { next: { revalidate: 0 } });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/pages?populate=*&sort=Ordre:asc`,
+    { next: { revalidate: 0 } }
+  );
   const data = await res.json();
   return data.data;
 }

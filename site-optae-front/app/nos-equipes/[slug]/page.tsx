@@ -1,4 +1,4 @@
-import Collaborateur from "@/_components/CollaborateurProfil";
+import Collaborateur from "@/_components/ProfilCollaborateur";
 
 async function getCollaborateurs(slug:string) {
 
@@ -11,8 +11,7 @@ async function getCollaborateurs(slug:string) {
 export default async function Equipe({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const data = await getCollaborateurs(slug);
-    console.log("slug:", slug);
-    console.log("data:", data);
+
 
     return (
         <main>

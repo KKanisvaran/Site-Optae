@@ -44,7 +44,9 @@ export default function NavContainer({ pages }: { pages: any[] }) {
     : mainPages;
 
   function getChildren(parentTitle: string) {
-    return pages.filter(page => page.parent?.Title === parentTitle);
+    return pages
+        .filter(page => page.parent?.Title === parentTitle)
+        .sort((a, b) => (a.Ordre ?? 99) - (b.Ordre ?? 99));
   }
 
   function onClickArrow(id: number) {
