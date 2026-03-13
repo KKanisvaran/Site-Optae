@@ -57,7 +57,7 @@ export default function CardOffre({ items }: { items: any[] }) {
                                     {/* Profil*/}
                                     <div className="flex items-center gap-2 text-[11px] text-[#1B2A6B]/70 font-medium">
                                         <User className="w-4 h-4 text-[#4F5E8A]" />
-                                        <span>{item.profil_recherche || "Non spécifié"}</span>
+                                        <span>{item.profil_recherche || "Non spécifié3"}</span>
                                     </div>
 
                                     {/* Lieu */}

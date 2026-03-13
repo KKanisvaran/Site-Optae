@@ -1,20 +1,20 @@
 {
   "kind": "collectionType",
-  "collectionName": "stats",
+  "collectionName": "cardicons",
   "info": {
-    "singularName": "stat",
-    "pluralName": "stats",
-    "displayName": "Stat"
+    "singularName": "cardicon",
+    "pluralName": "cardicons",
+    "displayName": "cardicon"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "Nom": {
       "type": "string"
     },
-    "Icons": {
+    "Img": {
       "type": "media",
       "multiple": true,
       "allowedTypes": [
@@ -24,8 +24,9 @@
         "audios"
       ]
     },
-    "Value": {
-      "type": "biginteger"
+    "Slug": {
+      "type": "uid",
+      "targetField": "Nom"
     }
   }
 }

@@ -31,7 +31,7 @@ export default function Footer() {
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 text-center md:text-left">
               <div className="p-1 rounded-xl border border-white/20 bg-white/5 backdrop-blur-sm">
                 <Image 
-                  src="/logos/logo_optae.png" 
+                  src="/logos/logo_optae_blanc.png" 
                   alt="Logo OPTAE" 
                   width={180} 
                   height={70} 
@@ -151,7 +151,7 @@ export default function Footer() {
               <div className="p-3 rounded-xl border border-white/20 bg-white/5 backdrop-blur-sm">
                 <a href="https://trackoe.fr" target="_blank" rel="noopener noreferrer" className="group">
                   <Image 
-                    src="/logos/logo_trackoe.png" 
+                    src="/logos/logo_trackoe_blanc.png" 
                     alt="Trackoé" 
                     width={200} 
                     height={90} 
@@ -164,7 +164,7 @@ export default function Footer() {
               <div className="p-3 rounded-xl border border-white/20 bg-white/5 backdrop-blur-sm">
                 <a href="https://infinitri.eco" target="_blank" rel="noopener noreferrer" className="group">
                   <Image 
-                    src="/logos/logo_infinitri.png" 
+                    src="/logos/logo_infinitri_blanc.png" 
                     alt="Infinitri" 
                     width={200} 
                     height={90} 
@@ -182,7 +182,7 @@ export default function Footer() {
               <Link href="https://fr.linkedin.com/company/optae" target="_blank" className="p-4 bg-white/5 rounded-full hover:bg-white hover:text-[#12144D] transition-all group shadow-inner">
                 <Linkedin size={24} className="group-hover:scale-110 transition-transform" /> 
               </Link>
-              <Link href="mailto:contact@optae.fr" className="p-4 bg-white/5 rounded-full hover:bg-white hover:text-[#12144D] transition-all group shadow-inner">
+              <Link href="/contact" className="p-4 bg-white/5 rounded-full hover:bg-white hover:text-[#12144D] transition-all group shadow-inner">
                 <Mail size={24} className="group-hover:scale-110 transition-transform" />
               </Link>
             </div>

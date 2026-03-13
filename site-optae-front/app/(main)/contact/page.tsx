@@ -43,12 +43,6 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-full bg-[#1B2A6B]/10 flex items-center justify-center text-[#1B2A6B]">
-                    <Mail size={16} />
-                  </div>
-                  <span className="text-gray-700 font-medium">contact@optae.fr</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#1B2A6B]/10 flex items-center justify-center text-[#1B2A6B]">
                     <MapPin size={16} />
                   </div>
                   <span className="text-gray-700 font-medium">91 Avenue de la République, 75011 Paris</span>

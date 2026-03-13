@@ -24,7 +24,7 @@ export default function CollaborateurProfil({ collaborateur }: { collaborateur: 
 
                     {/* Contenu textuel */}
                     <div className="flex-1 text-white">
-                        <Link href="/nos-equipes"
+                        <Link href="/services/nos-equipes"
                             className="flex items-center gap-2 text-xs uppercase tracking-widest mb-8 opacity-60  hover:opacity-100 transition-opacity"
                             style={{ color: "var(--optae-light)" }}>
                             ← Back to our people        

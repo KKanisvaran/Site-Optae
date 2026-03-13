@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "offre_d_emplois",
+  "info": {
+    "singularName": "offre-d-emploi",
+    "pluralName": "offre-d-emplois",
+    "displayName": "Offre d'emploi"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nom_Poste": {
+      "type": "string"
+    },
+    "Description_courte": {
+      "type": "text"
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Nom_Poste"
+    },
+    "profil_recherche": {
+      "type": "string"
+    },
+    "Prerequis_poste": {
+      "type": "blocks"
+    },
+    "publication_offre": {
+      "type": "blocks"
+    },
+    "salaire": {
+      "type": "string"
+    },
+    "temps_travail": {
+      "type": "string"
+    },
+    "type_de_contrat": {
+      "type": "string"
+    },
+    "Lieu": {
+      "type": "string"
+    },
+    "experience": {
+      "type": "string"
+    }
+  }
+}

@@ -51,6 +51,12 @@
     },
     "expertises": {
       "type": "blocks"
+    },
+    "collectivite": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::collectivite.collectivite",
+      "inversedBy": "Intervenants"
     }
   }
 }

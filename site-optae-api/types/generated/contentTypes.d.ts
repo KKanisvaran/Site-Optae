@@ -568,6 +568,72 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCardiconCardicon extends Struct.CollectionTypeSchema {
+  collectionName: 'cardicons';
+  info: {
+    displayName: 'cardicon';
+    pluralName: 'cardicons';
+    singularName: 'cardicon';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Img: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cardicon.cardicon'
+    > &
+      Schema.Attribute.Private;
+    Nom: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    Slug: Schema.Attribute.UID<'Nom'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCarouselCarousel extends Struct.CollectionTypeSchema {
+  collectionName: 'carousels';
+  info: {
+    displayName: 'Carousel';
+    pluralName: 'carousels';
+    singularName: 'carousel';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.Text;
+    Image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::carousel.carousel'
+    > &
+      Schema.Attribute.Private;
+    Nom: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    Slug: Schema.Attribute.UID<'Nom'>;
+    Titre: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -614,6 +680,10 @@ export interface ApiCollaborateurCollaborateur
   attributes: {
     Bio: Schema.Attribute.Blocks;
     Bureau: Schema.Attribute.String;
+    collectivite: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::collectivite.collectivite'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -631,6 +701,50 @@ export interface ApiCollaborateurCollaborateur
     Photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     Poste: Schema.Attribute.String;
     Prenom: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    Slug: Schema.Attribute.UID<'Nom'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCollectiviteCollectivite
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'collectivites';
+  info: {
+    displayName: 'Collectivit\u00E9';
+    pluralName: 'collectivites';
+    singularName: 'collectivite';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.Text;
+    Description_carousel: Schema.Attribute.Text;
+    Intervenants: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::collaborateur.collaborateur'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::collectivite.collectivite'
+    > &
+      Schema.Attribute.Private;
+    Nom: Schema.Attribute.String;
+    Photo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    photo_carousel: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    Point_fort: Schema.Attribute.Blocks;
     publishedAt: Schema.Attribute.DateTime;
     Slug: Schema.Attribute.UID<'Nom'>;
     updatedAt: Schema.Attribute.DateTime;
@@ -671,6 +785,45 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiOffreDEmploiOffreDEmploi
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'offre_d_emplois';
+  info: {
+    displayName: "Offre d'emploi";
+    pluralName: 'offre-d-emplois';
+    singularName: 'offre-d-emploi';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description_courte: Schema.Attribute.Text;
+    experience: Schema.Attribute.String;
+    Lieu: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::offre-d-emploi.offre-d-emploi'
+    > &
+      Schema.Attribute.Private;
+    Nom_Poste: Schema.Attribute.String;
+    Prerequis_poste: Schema.Attribute.Blocks;
+    profil_recherche: Schema.Attribute.String;
+    publication_offre: Schema.Attribute.Blocks;
+    publishedAt: Schema.Attribute.DateTime;
+    salaire: Schema.Attribute.String;
+    Slug: Schema.Attribute.UID<'Nom_Poste'>;
+    temps_travail: Schema.Attribute.String;
+    type_de_contrat: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPagePage extends Struct.CollectionTypeSchema {
   collectionName: 'pages';
   info: {
@@ -697,6 +850,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'> &
       Schema.Attribute.Private;
+    Ordre: Schema.Attribute.Integer;
     parent: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>;
     publishedAt: Schema.Attribute.DateTime;
     Slug: Schema.Attribute.UID<'Title'>;
@@ -721,7 +875,6 @@ export interface ApiStatStat extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.String;
     Icons: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
@@ -1253,9 +1406,13 @@ declare module '@strapi/strapi' {
       'api::about.about': ApiAboutAbout;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
+      'api::cardicon.cardicon': ApiCardiconCardicon;
+      'api::carousel.carousel': ApiCarouselCarousel;
       'api::category.category': ApiCategoryCategory;
       'api::collaborateur.collaborateur': ApiCollaborateurCollaborateur;
+      'api::collectivite.collectivite': ApiCollectiviteCollectivite;
       'api::global.global': ApiGlobalGlobal;
+      'api::offre-d-emploi.offre-d-emploi': ApiOffreDEmploiOffreDEmploi;
       'api::page.page': ApiPagePage;
       'api::stat.stat': ApiStatStat;
       'plugin::content-releases.release': PluginContentReleasesRelease;

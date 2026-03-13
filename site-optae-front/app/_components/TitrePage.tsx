@@ -12,7 +12,7 @@ const titres: { [key: string]: string } = {
     "/contact": "NOUS CONTACTER",
     "/collectivites": "COLLECTIVITÉS",
     "/a-propos": "À PROPOS",
-    "/bureau-d-etudes": "BUREAU D'ÉTUDES",
+    "/services/bureau-d-etudes": "BUREAU D'ÉTUDES",
     
 };
 
